@@ -30,12 +30,17 @@ public class Conexion {
 			Statement st = con.createStatement();
 			
 			// Paso 5 Ejecutar la consulta
-			ResultSet rs = st.executeQuery("select * from estudiante");
+			ResultSet rs = st.executeQuery("select * from pregrado.estudiante");
 			
-			rs.next();
+			/*rs.next();
 			
 			String nom = rs.getString(2);
 			String ap = rs.getString("apellido");
+			rs.next();
+			*/
+			while(rs.next()) {
+				System.out.println(String.format("Nombre completo: %s %s", rs.getString(2), rs.getString("apellido")));
+			}
 			/*	  
 			 * [] <----
 			 * []
@@ -44,11 +49,11 @@ public class Conexion {
 			 * 
 			 * */
 			
+			
+			//System.out.println(String.format("Nombre completo: %s %s", nom, ap));
 			con.close();
 			st.close();
 			rs.close();
-			System.out.println(String.format("Nombre completo: %s %s", nom, ap));
-			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
